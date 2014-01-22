@@ -1,0 +1,13 @@
+wx_gipe
+---------
+
+Requirements:
+1. gdal-bin
+2. python-gdal
+3. numpy
+4. python2.6-wxgtk2.8 (or more)
+
+
+-------------
+Run:
+"python wx_gipe.py"
