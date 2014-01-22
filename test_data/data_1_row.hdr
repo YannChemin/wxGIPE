@@ -1,0 +1,8 @@
+ENVI
+samples = 37
+lines   = 1
+bands   = 136
+data type = 12
+interleave = bsq
+header offset = 0
+byte order = 0
