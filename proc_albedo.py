@@ -16,7 +16,10 @@ from GDAL_functions import *
 # For icons, pngs, etc coming from images.py
 from wx import ImageFromStream, BitmapFromImage, EmptyIcon
 import cStringIO
-import images
+try:
+	import images
+except ImportError:
+	images = None
 
 # Get Remote Sensing functions
 from RS import *
@@ -67,7 +70,10 @@ class MyFrame(wx.Frame):
 			size=(400,650),
 			style=wx.DEFAULT_FRAME_STYLE):
 		wx.Frame.__init__(self, parent, id, title, pos, size, style)
-		ico = images.getPngGipeIcon()
+		if images:
+			ico = images.getPngGipeIcon()
+		else:
+			ico = wx.EmptyIcon()
 		self.SetIcon(ico)
 		self.lognull = wx.LogNull()
 		self.alb=rs.albedo()
@@ -363,23 +369,29 @@ class MyFrame(wx.Frame):
 	# Bottom buttons	
 	def make_buttons(self):
 		self.bbox = wx.BoxSizer(wx.HORIZONTAL)
+		if images:
 		# OnOK
-		bmp0 = images.getPngDialogOKBitmap()
-		self.b0 = wx.BitmapButton(self, 20, bmp0, (20, 20),
-                       (bmp0.GetWidth()+50, bmp0.GetHeight()+10), style=wx.NO_BORDER)
-        	self.b0.SetToolTipString("Process")
+			bmp0 = images.getPngDialogOKBitmap()
+			self.b0 = wx.BitmapButton(self, 20, bmp0, (20, 20),
+			       (bmp0.GetWidth()+50, bmp0.GetHeight()+10), style=wx.NO_BORDER)
+			self.b0.SetToolTipString("Process")
+			# OnCancel
+			bmp1 = images.getPngDialogCancelBitmap()
+			self.b1 = wx.BitmapButton(self, 30, bmp1, (20, 20),
+			       (bmp1.GetWidth()+50, bmp1.GetHeight()+10), style=wx.NO_BORDER)
+			self.b1.SetToolTipString("Abort")
+			# OnInfo
+			bmp2 = images.getPngHelpAboutBitmap()
+			self.b2 = wx.BitmapButton(self, 40, bmp2, (20, 20),
+			       (bmp2.GetWidth()+50, bmp2.GetHeight()+10), style=wx.NO_BORDER)
+			self.b2.SetToolTipString("Help/Info.")
+		else:
+			self.b0 = wx.Button(self, wx.ID_OK)
+			self.b1 = wx.Button(self, wx.ID_CANCEL)
+			self.b2 = wx.Button(self, wx.ID_HELP)
+
 		self.bbox.Add(self.b0,1,wx.CENTER,10)
-		# OnCancel
-		bmp1 = images.getPngDialogCancelBitmap()
-		self.b1 = wx.BitmapButton(self, 30, bmp1, (20, 20),
-                       (bmp1.GetWidth()+50, bmp1.GetHeight()+10), style=wx.NO_BORDER)
-		self.b1.SetToolTipString("Abort")
 		self.bbox.Add(self.b1,1,wx.CENTER,10)
-		# OnInfo 
-		bmp2 = images.getPngHelpAboutBitmap()
-		self.b2 = wx.BitmapButton(self, 40, bmp2, (20, 20),
-                       (bmp2.GetWidth()+50, bmp2.GetHeight()+10), style=wx.NO_BORDER)
-        	self.b2.SetToolTipString("Help/Info.")
 		self.bbox.Add(self.b2,1,wx.CENTER,10)
 
 
