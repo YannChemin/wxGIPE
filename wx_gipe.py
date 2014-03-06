@@ -91,7 +91,7 @@ class MyFrame(wx.Frame):
 	def __init__(self, *args, **kwargs):
 		wx.Frame.__init__(self, *args, **kwargs)
 		self.CreateStatusBar()
-		self.SetSize((800,800))
+		self.SetSize(wx.GetDisplaySize())
 		self.SetTitle("GDAL Image Processing Environment")
 		ico = GipeIcon.getIcon()
 		self.SetIcon(ico)
