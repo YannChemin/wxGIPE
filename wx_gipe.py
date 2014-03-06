@@ -9,25 +9,8 @@
 # Author:   Yann Chemin, <yann.chemin@gmail.com>
 #
 ###############################################################################
-# Copyright (c) 2008, Yann Chemin <yann.chemin@gmail.com>
-#
-# Permission is hereby granted, free of charge, to any person obtaining a
-# copy of this software and associated documentation files (the "Software"),
-# to deal in the Software without restriction, including without limitation
-# the rights to use, copy, modify, merge, publish, distribute, sublicense,
-# and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included
-# in all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-# OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-# DEALINGS IN THE SOFTWARE.
+# Unlicensed 2008, Yann Chemin <yann.chemin@gmail.com>
+# Public Domain
 ###############################################################################
 
 import wx
@@ -311,18 +294,14 @@ class MyFrame(wx.Frame):
 		info = wx.AboutDialogInfo()
 		info.Name = "GIPE"
 		info.Version = "0.0.2"
-		info.Copyright = """Copyright (c) 2008, Yann Chemin.\n
+		info.Copyright = """Public Domain (2008) Yann Chemin.\n
 """
 		info.Description = wordwrap(" ",350, wx.ClientDC(self))
 		info.WebSite = ("http://www.osgeo.org/gdal", "GDAL home page")
 		info.Developers = [ "Yann Chemin <yann.chemin@gmail.com>\nUsed code from:","Frank Warmerdam <warmerdam@pobox.com>","Andrey Kiselev <dron@remotesensing.org>","" ]
 		overview = """<html><body>
 			<h2><center>GDAL Image Processing Environment</center></h2>.</body></html>"""
-		licenseText = """This library is free software; you can redistribute it and/or modify it under the terms of the GNU Library General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.\n
-This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Library General Public License for more details.\n
-You should have received a copy of the GNU Library General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
-Boston, MA 02111-1307, USA.
-		"""
+		licenseText = """Unlicensed (http://unlicense.org), or LGPL v2, as you wish."""
 		info.License = wordwrap(licenseText, 500, wx.ClientDC(self))
 		# Then we call wx.AboutBox giving it that info object
 		wx.AboutBox(info)
